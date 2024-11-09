@@ -1,63 +1,44 @@
 const typeDefs = `
-  type User {
-    _id: ID!
-    username: String!
-    email: String
-    workoutCount: Int
-    savedWorkouts: [Workout]
-    fitnessGoals: String
-    weight: Float
-    height: Float
-  }
+type User {
+  _id: ID!
+  username: String!
+  email: String
+  workoutCount: Int
+  savedWorkouts: [Workout]
+}
 
-  type Workout {
-    _id: ID!
-    date: String
-    totalCaloriesBurned: Float
-    totalDuration: Int
-    exercises: [Exercise]
-  }
+type Workout {
+  workoutId: ID!
+  description: String!
+  duration: Int!
+  type: String!
+  date: String!
+  image: String
+}
 
-  type Exercise {
-    name: String!
-    sets: Int!
-    reps: Int!
-    weight: Float
-    duration: Int
-    caloriesBurned: Float
-    comments: String
-  }
+type Auth {
+  token: ID!
+  user: User
+}
 
-  type Auth {
-    token: ID!
-    user: User
-  }
+input WorkoutInput {
+  description: String!
+  duration: Int!
+  type: String!
+  date: String!
+  image: String
+}
 
-  input ExerciseInput {
-    name: String!
-    sets: Int!
-    reps: Int!
-    weight: Float
-    duration: Int
-    caloriesBurned: Float
-    comments: String
-  }
+type Query {
+  me: User
+}
 
-  input WorkoutInput {
-    date: String
-    exercises: [ExerciseInput]
-  }
-
-  type Query {
-    me: User
-  }
-
-  type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-    saveWorkout(workoutData: WorkoutInput!): User
-    removeWorkout(workoutId: ID!): User
-  }
+type Mutation {
+  login(email: String!, password: String!): Auth
+  addUser(username: String!, email: String!, password: String!): Auth
+  saveWorkout(workoutData: WorkoutInput!): Workout  # Updated to return Workout
+  removeWorkout(workoutId: ID!): User
+}
 `;
 
 module.exports = typeDefs;

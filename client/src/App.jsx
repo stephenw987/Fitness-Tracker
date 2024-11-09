@@ -1,5 +1,5 @@
 import './App.css';
-import { Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';  // Use Routes and Route to define routing
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,6 +9,8 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Navbar from './components/Navbar';
+import AddWorkoutPage from './pages/AddWorkoutPage'; // Import the new AddWorkoutPage
+import SavedWorkouts from './pages/SavedWorkouts';    // You already have this page
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -17,9 +19,7 @@ const httpLink = createHttpLink({
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
@@ -29,7 +29,6 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
@@ -38,7 +37,22 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Navbar />
-      <Outlet />
+      
+      {/* Hero Section */}
+      <div className="hero-section">
+        <div className="hero-content">
+          <h1 className="hero-title">Welcome to the Fitness Tracker</h1>
+          <p className="hero-subtitle">Track your workouts and achieve your fitness goals</p>
+          <a href="/add-workout" className="cta-button">Get Started</a>
+        </div>
+      </div>
+
+      {/* Define the routes for different pages */}
+      <Routes>
+        <Route path="/" element={<h1>Welcome to the Fitness Tracker</h1>} />
+        <Route path="/add-workout" element={<AddWorkoutPage />} />
+        <Route path="/saved-workouts" element={<SavedWorkouts />} />
+      </Routes>
     </ApolloProvider>
   );
 }

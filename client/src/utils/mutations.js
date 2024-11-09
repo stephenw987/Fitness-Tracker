@@ -1,6 +1,6 @@
-// mutation.js
 import { gql } from '@apollo/client';
 
+// Existing login and addUser mutations
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -25,43 +25,41 @@ export const ADD_USER = gql`
   }
 `;
 
+
+
+// New mutation to save a workout
 export const SAVE_WORKOUT = gql`
   mutation saveWorkout($workoutData: WorkoutInput!) {
     saveWorkout(workoutData: $workoutData) {
       _id
       username
-      email
       savedWorkouts {
-        _id
+        workoutId
+        name
+        description
+        duration
+        caloriesBurned
+        type
         date
-        exercises {
-          name
-          sets
-          reps
-          weight
-          duration
-          caloriesBurned
-        }
       }
     }
   }
 `;
 
+// You can also add a removeWorkout mutation if you plan to implement removal of saved workouts
 export const REMOVE_WORKOUT = gql`
   mutation removeWorkout($workoutId: ID!) {
     removeWorkout(workoutId: $workoutId) {
       _id
       username
-      email
       savedWorkouts {
-        _id
+        workoutId
+        name
+        description
+        duration
+        caloriesBurned
+        type
         date
-        exercises {
-          name
-          sets
-          reps
-          weight
-        }
       }
     }
   }

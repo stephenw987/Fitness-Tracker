@@ -1,4 +1,5 @@
 // queries.js
+
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
@@ -8,16 +9,13 @@ export const QUERY_ME = gql`
       username
       email
       savedWorkouts {
-        _id
+        workoutId
+        name
+        description
+        duration
+        caloriesBurned
+        type
         date
-        exercises {
-          name
-          sets
-          reps
-          weight
-          duration
-          caloriesBurned
-        }
       }
     }
   }

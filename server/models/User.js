@@ -1,47 +1,59 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const { Schema } = mongoose;
+const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt');
+const workoutSchema = require('./Workout');  // Import workout schema for use as reference
 
 const userSchema = new Schema(
   {
     username: {
       type: String,
       required: true,
-      unique: true,  // Ensuring that username is unique
+      unique: true,
     },
     email: {
       type: String,
       required: true,
-      unique: true,  // Ensuring that email is unique
-      lowercase: true,
-      trim: true,
+      unique: true,
+      match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
     password: {
       type: String,
       required: true,
     },
-    savedWorkouts: {
-      type: [Object],  // Adjust depending on your workout data model
-      default: [],
-    },
+    // Use references to workouts (ObjectId)
+    savedWorkouts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Workout', // Reference to Workout model
+      },
+    ],
   },
   {
-    timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
   }
 );
 
-// Hash the password before saving it to the database
+// Hash user password before saving to database
 userSchema.pre('save', async function (next) {
-  if (this.isModified('password')) {
-    this.password = await bcrypt.hash(this.password, 10);
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
   }
+
   next();
 });
 
-// Method to check if the entered password matches the hashed password
+// Custom method to compare and validate password for logging in
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
+// Virtual to get the count of saved workouts
+userSchema.virtual('workoutCount').get(function () {
+  return this.savedWorkouts.length;
+});
+
+const User = model('User', userSchema);
+
 module.exports = User;

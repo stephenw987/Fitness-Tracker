@@ -4,7 +4,6 @@ export const getSavedWorkoutIds = () => {
   const savedWorkoutIds = localStorage.getItem('saved_workouts')
     ? JSON.parse(localStorage.getItem('saved_workouts'))
     : [];
-
   return savedWorkoutIds;
 };
 
@@ -25,10 +24,11 @@ export const removeWorkoutId = (workoutId) => {
     return false;
   }
 
-  const updatedSavedWorkoutIds = savedWorkoutIds?.filter(
+  const updatedSavedWorkoutIds = savedWorkoutIds.filter(
     (savedWorkoutId) => savedWorkoutId !== workoutId
   );
   localStorage.setItem('saved_workouts', JSON.stringify(updatedSavedWorkoutIds));
 
   return true;
 };
+

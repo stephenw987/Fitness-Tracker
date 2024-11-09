@@ -7,7 +7,6 @@ import LoginForm from './LoginForm';
 import Auth from '../utils/auth';
 
 const AppNavbar = () => {
-  // set modal display state
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -20,14 +19,12 @@ const AppNavbar = () => {
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar' className='d-flex flex-row-reverse'>
             <Nav className='ml-auto d-flex'>
-              <Nav.Link as={Link} to='/'>
-                Home
-              </Nav.Link>
-              {/* if user is logged in show saved workouts and logout */}
+              <Nav.Link as={Link} to='/add-workout'>Add Workout</Nav.Link> {/* Link to Add Workout page */}
+              {/* If the user is logged in, show saved workouts and logout options */}
               {Auth.loggedIn() ? (
                 <>
-                  <Nav.Link as={Link} to='/saved'>
-                    See Your Workouts
+                  <Nav.Link as={Link} to='/saved-workouts'>
+                    View Saved Workouts
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
@@ -38,13 +35,13 @@ const AppNavbar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      {/* set modal data up */}
+
+      {/* Modal for Login / SignUp */}
       <Modal
         size='lg'
         show={showModal}
         onHide={() => setShowModal(false)}
         aria-labelledby='signup-modal'>
-        {/* tab container to do either signup or login component */}
         <Tab.Container defaultActiveKey='login'>
           <Modal.Header closeButton>
             <Modal.Title id='signup-modal'>
