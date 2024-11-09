@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
 
-// Use the MONGODB_URI from environment variables or fallback to the local MongoDB URI
-const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/fitnesstracker';
+const connectionString = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/fitnessTracker';
 
-// Connect to MongoDB
-mongoose.connect(mongoURI, {
+// Updated connection code without deprecated options
+mongoose.connect(connectionString, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true, // Ensure you're using the newer connection model
 })
-  .then(() => console.log('Connected to MongoDB!'))
-  .catch(err => console.error('Error connecting to MongoDB:', err));
+  .then(() => {
+    console.log('MongoDB connected successfully!');
+  })
+  .catch(err => {
+    console.error('MongoDB connection error:', err);
+  });
 
-// Export the connection to be used in other parts of the application
 module.exports = mongoose.connection;
+

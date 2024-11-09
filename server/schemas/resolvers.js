@@ -1,40 +1,64 @@
-const jwt = require('jsonwebtoken');
-const { GraphQLError } = require('graphql');
-const secret = 'mysecretsshhhhh';
-const expiration = '2h';
+const { User, Workout } = require('../models'); // Import both User and Workout models
+const { AuthenticationError } = require('../utils/auth');
 
-module.exports = {
-  AuthenticationError: new GraphQLError('Could not authenticate user.', {
-    extensions: {
-      code: 'UNAUTHENTICATED',
+const resolvers = {
+  Query: {
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
+        return userData;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
-  }),
-  authMiddleware: function ({ req }) {
-    // allows token to be sent via req.body, req.query, or headers
-    let token = req.body.token || req.query.token || req.headers.authorization;
-
-    // ["Bearer", "<tokenvalue>"]
-    if (req.headers.authorization) {
-      token = token.split(' ').pop().trim();
-    }
-
-    if (!token) {
-      return req;
-    }
-
-    try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
-    } catch {
-      console.log('Invalid token');
-    }
-
-    return req;
   },
-  signToken: function ({ username, email, _id }) {
-    const payload = { username, email, _id };
 
-    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+  Mutation: {
+    saveWorkout: async (parent, { workoutData }, context) => {
+      if (context.user) {
+        // Create and save new workout
+        const newWorkout = new Workout({
+          name: workoutData.name,
+          description: workoutData.description,
+          duration: workoutData.duration,
+          caloriesBurned: workoutData.caloriesBurned,
+          type: workoutData.type,
+          date: workoutData.date,
+         // image: workoutData.image,
+        });
+
+        await newWorkout.save();
+
+        // Add the new workout to the user's savedWorkouts (only save the workoutId)
+        const updatedUser = await User.findByIdAndUpdate(
+          context.user._id,
+          { $push: { savedWorkouts: newWorkout._id } }, // Push workout's ObjectId
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    removeWorkout: async (parent, { workoutId }, context) => {
+      if (context.user) {
+        // Remove the workout from savedWorkouts by workoutId
+        const updatedUser = await User.findByIdAndUpdate(
+          context.user._id,
+          { $pull: { savedWorkouts: workoutId } }, // Pull workoutId from savedWorkouts
+          { new: true }
+        );
+
+        // Optionally, remove the workout document from the Workout collection itself
+        await Workout.findByIdAndDelete(workoutId);
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 
+module.exports = resolvers;

@@ -100,4 +100,4 @@ https://github.com/stephenw987/Fitness-Tracker.git
 
 ## Render App Deployment
 
-https://fitness-tracker-yx3g.onrender.com
+https://fitness-tracker-yx3g.onrender.com 

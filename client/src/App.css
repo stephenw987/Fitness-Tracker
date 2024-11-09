@@ -1,17 +1,68 @@
+/* App.css */
+
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  color: #333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Rubik Mono One', sans-serif;
+/* Hero Section Styles */
+.hero-section {
+  background-color: #2d3e50; /* Dark Blue Background */
+  color: white;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 60vh; /* Full screen height */
 }
 
-.small {
-  font-weight: 300;
-  font-style: italic;
+.hero-content {
+  max-width: 800px;
 }
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  opacity: 0.8;
+}
+
+.cta-button {
+  background-color: #ff6f61; /* Bright accent color */
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #ff4c39; /* Darker accent color on hover */
+}
+
+/* Styling for Routes and Pages */
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 50px 0;
+}
+
+/* Optional: Add styles for different pages like AddWorkoutPage */
