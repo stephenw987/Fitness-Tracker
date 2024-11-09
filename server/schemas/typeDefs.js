@@ -8,7 +8,9 @@ type User {
 }
 
 type Workout {
-  workoutId: ID!
+  _id: ID!
+   name: String!
+  caloriesBurned: Int
   description: String!
   duration: Int!
   type: String!
@@ -22,10 +24,12 @@ type Auth {
 }
 
 input WorkoutInput {
+  name: String!
+  caloriesBurned: Int
   description: String!
   duration: Int!
   type: String!
-  date: String!
+  date: String
   image: String
 }
 
@@ -36,7 +40,7 @@ type Query {
 type Mutation {
   login(email: String!, password: String!): Auth
   addUser(username: String!, email: String!, password: String!): Auth
-  saveWorkout(workoutData: WorkoutInput!): Workout  # Updated to return Workout
+  saveWorkout(workoutData: WorkoutInput!): User  # Updated to return Workout
   removeWorkout(workoutId: ID!): User
 }
 `;

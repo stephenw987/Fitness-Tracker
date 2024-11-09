@@ -6,6 +6,7 @@ import moment from 'moment'; // To handle date formatting
 
 const AddWorkout = () => {
   const [workoutData, setWorkoutData] = useState({
+    name: '',
     type: '',
     description: '',
     duration: '',
@@ -41,6 +42,7 @@ const AddWorkout = () => {
       // Log the request payload to see the structure
       const payload = {
         workoutData: {
+          name: workoutData.name,
           type: workoutData.type,
           description: workoutData.description,
           duration: parseInt(workoutData.duration, 10), // Ensure it's an integer
@@ -60,6 +62,7 @@ const AddWorkout = () => {
 
       // Clear the form after successful submission
       setWorkoutData({
+        name: '',
         type: '',
         description: '',
         duration: '',
@@ -82,6 +85,18 @@ const AddWorkout = () => {
           <div className="add-workout-card">
             <h2>Add a New Workout</h2>
             <Form onSubmit={handleFormSubmit}>
+            <Form.Group>
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  as="input"
+                  placeholder="Enter workout name."
+                  name="name"
+                  value={workoutData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </Form.Group>
+
               <Form.Group>
                 <Form.Label>Workout Type</Form.Label>
                 <Form.Control
