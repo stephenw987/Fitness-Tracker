@@ -27,9 +27,9 @@ const workoutSchema = new Schema(
       required: true,
       default: Date.now,
     },
-    //image: {
-      //type: String, // Optional image for the workout
-    //},
+    image: {
+      type: String, // Optional image for the workout
+    },
   },
   { timestamps: true }
 );

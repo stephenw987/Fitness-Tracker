@@ -3,20 +3,22 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
-  {
-    me {
+  query Query {
+  me {
+    _id
+    username
+    email
+    workoutCount
+    savedWorkouts {
       _id
-      username
-      email
-      savedWorkouts {
-        workoutId
-        name
-        description
-        duration
-        caloriesBurned
-        type
-        date
-      }
+      name
+      caloriesBurned
+      description
+      duration
+      type
+      date
+      image
     }
   }
+}
 `;

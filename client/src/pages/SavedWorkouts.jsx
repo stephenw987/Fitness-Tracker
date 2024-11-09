@@ -17,7 +17,7 @@ const SavedWorkouts = () => {
     if (!token) {
       return false;
     }
-
+console.log(workoutId);
     try {
       await removeWorkout({ variables: { workoutId } });
       alert('Workout deleted successfully!');
@@ -36,7 +36,7 @@ const SavedWorkouts = () => {
       <h2>Saved Workouts</h2>
       <Row>
         {userData.savedWorkouts?.map((workout) => (
-          <Col md={4} key={workout.workoutId}>
+          <Col md={4} key={workout._id}>
             <Card>
               <Card.Body>
                 <Card.Title>{workout.name}</Card.Title>
@@ -46,7 +46,7 @@ const SavedWorkouts = () => {
                 <Card.Text>Type: {workout.type}</Card.Text>
                 <Button
                   variant="danger"
-                  onClick={() => handleDeleteWorkout(workout.workoutId)}
+                  onClick={() => handleDeleteWorkout(workout._id)}
                 >
                   Remove Workout
                 </Button>

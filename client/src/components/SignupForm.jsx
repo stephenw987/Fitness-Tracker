@@ -19,9 +19,10 @@ const SignupForm = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const [addUser, { error }] = useMutation(ADD_USER);
-
+  
   useEffect(() => {
     if (error) {
+      console.log (JSON.stringify(error));
       setShowAlert(true);
     } else {
       setShowAlert(false);

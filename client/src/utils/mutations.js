@@ -14,53 +14,58 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
-      token
-      user {
-        _id
-        username
-      }
+  mutation AddUser($username: String!, $email: String!, $password: String!) {
+  addUser(username: $username, email: $email, password: $password) {
+    token
+    user {
+      username
+      _id
     }
   }
+}
+
 `;
 
 
 
 // New mutation to save a workout
 export const SAVE_WORKOUT = gql`
-  mutation saveWorkout($workoutData: WorkoutInput!) {
-    saveWorkout(workoutData: $workoutData) {
+ mutation SaveWorkout($workoutData: WorkoutInput!) {
+  saveWorkout(workoutData: $workoutData) {
+    _id
+    username
+    savedWorkouts {
       _id
-      username
-      savedWorkouts {
-        workoutId
-        name
-        description
-        duration
-        caloriesBurned
-        type
-        date
-      }
+      name
+      caloriesBurned
+      description
+      duration
+      type
+      date
+      image
     }
   }
+}
 `;
 
 // You can also add a removeWorkout mutation if you plan to implement removal of saved workouts
 export const REMOVE_WORKOUT = gql`
-  mutation removeWorkout($workoutId: ID!) {
-    removeWorkout(workoutId: $workoutId) {
+  mutation RemoveWorkout($workoutId: ID!) {
+  removeWorkout(workoutId: $workoutId) {
+    _id
+    username
+    email
+    workoutCount
+    savedWorkouts {
       _id
-      username
-      savedWorkouts {
-        workoutId
-        name
-        description
-        duration
-        caloriesBurned
-        type
-        date
-      }
+      name
+      caloriesBurned
+      description
+      duration
+      type
+      date
+      image
     }
   }
+}
 `;
