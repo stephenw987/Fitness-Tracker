@@ -45,8 +45,9 @@ Fitness Tracker is intended for use by one or more Users to record their fitness
 Users of Fitness Tracker on a remote or local instance will only have access to their individual entries.
 
 
-<!-- ## Credits and Code Source -->
+## Credits and Code Source
 
+**Logo icon**: <a href="https://www.flaticon.com/free-icons/sport" title="sport icons">Sport icons created by Flowicon - Flaticon</a>
 
 
 
