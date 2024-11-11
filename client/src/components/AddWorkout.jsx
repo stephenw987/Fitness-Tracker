@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { SAVE_WORKOUT } from '../utils/mutations'; // Assuming this is your mutation file
+import {QUERY_ME} from '../utils/queries.js'
 import moment from 'moment'; // To handle date formatting
 
 const AddWorkout = () => {
+  const { loading, data } = useQuery(QUERY_ME);
+
+  const userData = data?.me || undefined;
+  console.log (userData);
+  
   const [workoutData, setWorkoutData] = useState({
     name: '',
     type: '',
@@ -73,8 +79,13 @@ const AddWorkout = () => {
       alert('Workout saved successfully!');
     } catch (err) {
       // Log the error to see what went wrong
-      console.error('Error saving workout:', err);
-      alert('Error saving workout: ' + err.message);
+      if (userData) {
+        console.error('Error saving workout:', err);
+        alert('Error saving workout: ' + err.message);
+      }
+      else {
+        alert ('Please log in to save a workout')
+      }
     }
   };
 
