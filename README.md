@@ -9,29 +9,31 @@
 - [Usage](#usage)
 - [Credit and Source Code](#credits-and-code-source)
 - [Contribution](#contribution)
+- [Project Team](#project-team)
 - [License](#license)
 - [Badges](#badges)
 - [Tests](#tests)
 - [GitHub Repository Location (HTTPS)](#github-repository-location-https)
-- [GitHub Pages Location](#github-pages-location)
+- [Render App Deployment](#render-app-deployment)
+- [Application Demo](#application-demo)
 - [Application Screenshots](#application-screenshots) 
 
 ## Description
 
-The **Fitness Tracker** is a MERN-stack application on one page that allows Users to log in with JWT authentication, creating a secure access to saved fitness sessions stored in MongoDB. As developed, the app is accessible through a public web deployment (e.g., Render) or locally via VS Code.
+The **Fitness Tracker** is a MERN-stack application on one page that allows users to log in with JWT authentication, creating secure access to saved fitness sessions stored in MongoDB. As developed, the app is accessible through a public web deployment (e.g., Render) or locally via VS Code.
 
-Publicly deployed, sessions/entries are held within a Mongo NoSQL database and made accessible through the Web, if publicly deployed.
+Publicly deployed sessions/entries are held within a Mongo NoSQL database and made accessible through the Web if publicly deployed.
 
-The **Fitness Tracker** source code is published on GitHub, and may be cloned to the local computers to run local versions.
+The **Fitness Tracker** source code is published on GitHub and may be cloned to the local computers to run local versions.
 
 
 ## Features
 
-- **Add workout**: Users can log their workouts.
+- **Add workout:** Users can log their workouts.
 
-- **View past workouts**: Users are able to look up and view prior workouts.
+- **View past workouts:** Users are able to look up and view prior workouts.
 
-- **Manage workouts**: Users are able to delete previously saved workouts they no longer wish to keep. 
+- **Manage workouts:** Users are able to delete previously saved workouts they no longer wish to keep. 
 
 
 ## Installation
@@ -52,44 +54,44 @@ The **Fitness Tracker** source code is published on GitHub, and may be cloned to
    npm run install
    ```
 
-The **Fitness Tracker** requires render and building of client and server aspects. It would then be accessible by designated port located in `./server/server.js`
+The **Fitness Tracker** requires render and building of client and server aspects. It would then be accessible by the designated port located in `./server/server.js`
 
 ## Directory Structure
 
 The directory structure of the application is as follows:
 ```
 Fitness-Tracker/
-├── assets/                            // Contains screenshots and application presentation documentations
+├── assets/                            // Contains screenshots and application presentation documentations.
 ├── client/                              
-│       ├── public                     // Directory for static assets
-│       ├── src                        // Contains application source code
-│       ├── .eslintrc.cjs              // A configuration file which acts as a static code analysis tool to identify and fix problems in JavaScript code
-│       ├── index.html                 // Main entry point for application website
-│       └── package.json               // Application client configuration file
+│       ├── public                     // Directory for static assets.
+│       ├── src                        // Contains application source code.
+│       ├── .eslintrc.cjs              // A configuration file which acts as a static code analysis tool to identify and fix problems in JavaScript code.
+│       ├── index.html                 // Main entry point for application website.
+│       └── package.json               // Application client configuration file.
 │
 ├── server/                                
-│   ├──config/
-│   ├──models/ 
-│   ├──schema/
-│   └──utils                       
+│   ├──config/                          // Contains configuration file for the server environment.
+│   ├──models/                          // Defines the application data structure.
+│   ├──schema/                          // Defines how data is organized, validated, and related within the database.
+│   └──utils                            // Contains utlity functions that assist in the application's operation. 
 │                         
-├── package.json                        // Application configuration file
-└── README.md                           // Application documentation
+├── package.json                        // Application configuration file.
+└── README.md                           // Application documentation.
 ```
 
 ### Server Configuration
 
-To change server configuration the user should set the appropriate environment variable:
+To change server configuration, the user should set the appropriate environment variable:
 
 * The default port for the server is 2001. To change this, set the port `PORT`environment variable to a valid port number.
 
-* The default location of the mongodb database is set to `mongodb://127.0.0.1:27017/fitnessTracker`. To change this, set the `MONGODB_URI`environment variable to valid mongodb database server. 
+* The default location of the mongodb database is set to `mongodb://127.0.0.1:27017/fitnessTracker`. To change this, set the `MONGODB_URI` environment variable to a valid mongodb database server. 
 
-* By default the server runs in development mode. To change this, set `NODE_ENV=production`
+* By default the server runs in development mode. To change this, set `NODE_ENV="production"`
 
 ### Client Configuration
 
-To change client configuration the user should edit `client/vite.config.js`:
+To change client configuration, the user should edit `client/vite.config.js`:
 
 * The `server.proxy['/graphql'].target` should be set to the correct server uri. The default uri value is `http://localhost:2001`. 
 
@@ -97,9 +99,7 @@ To change client configuration the user should edit `client/vite.config.js`:
 
 ## Usage
 
-Fitness Tracker is intended for use by one or more Users to record their fitness sessions/entries that will be held remotely and locally, and persist across multiple sessions. 
-
-Users of Fitness Tracker on a remote or local instance will only have access to their individual entries.
+**Fitness Tracker** is intended for one or more users to record their fitness sessions/entries. This data will be held locally and will persist across multiple sessions. Users of **Fitness Tracker** on a remote instance can only access their individual entries.
 
 
 <!-- ## Credits and Code Source -->
@@ -108,23 +108,28 @@ Users of Fitness Tracker on a remote or local instance will only have access to 
 
 Here are the guidelines for contributing to this project:
 
-- Fork the project: Create a copy of the project.
-- Create a branch: Create a new branch from the main branch.
-- Make changes: Improve the project by making commits.
-- Push your changes: Push your branch to your GitHub project.
-- Open a pull request: Submit your changes to the upstream repository.
-- Discuss and commit: The project team may discuss your changes and ask for more commits.
-- Merge or close: The project team will eventually merge or close your pull request. 
+- **Fork the project:** Create a copy of the project.
+- **Create a branch:** Create a new branch from the main branch.
+- **Make changes:** Improve the project by making commits.
+- **Push your changes:** Push your branch to your GitHub project.
+- **Open a pull request:** Submit your changes to the upstream repository.
+- **Discuss and commit:** The project team may discuss your changes and ask for more commits.
+- **Merge or close:** The project team will eventually merge or close your pull request. 
  
 Additional tips:
 
-- Write good bug reports: Include a summary, background, steps to reproduce, and sample code. 
- 
-- Review documentation: Before opening a new issue, check the documentation and support guide. 
- 
-- Don't duplicate issues: Search for existing issues to see if yours has already been reported. 
- 
-- Focus on quality: When you're first starting out, focus on making minor changes. 
+- **Write good bug reports:** Include a summary, background, steps to reproduce, and sample code. 
+- **Review documentation:** Before opening a new issue, check the documentation support guide. 
+- **Don't duplicate issues:** Search for existing issues to see if yours has already been reported. 
+- **Focus on quality:** At the onset, focus only on making minor changes. 
+
+## Project Team
+
+* Marlon Gonzalez: [GitHub](https://github.com/arrozDpollo)
+* Emeka Okpala: [GitHub](https://github.com/Hammarou)
+* Talita Rosa:  [GitHub](https://github.com/titarosa)
+* Stephen Wei:  [GitHub](https://github.com/stephenw987)
+
 
 
 ## License
@@ -176,7 +181,11 @@ https://github.com/stephenw987/Fitness-Tracker.git
 
 https://fitness-tracker-yx3g.onrender.com 
 
-# Application Screenshots
+## Application Demonstration
+
+![Fitness Tracker]()
+
+## Application Screenshots
 
 ![screenshot1](assets/screenshots/screenshot1.png)
 ![screenshot1](assets/screenshots/screenshot2.png)
