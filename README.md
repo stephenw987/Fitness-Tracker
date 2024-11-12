@@ -15,7 +15,7 @@
 - [Tests](#tests)
 - [GitHub Repository Location (HTTPS)](#github-repository-location-https)
 - [Render App Deployment](#render-app-deployment)
-- [Application Demo](#application-demo)
+- [Application Demonstration](#application-demonstration)
 - [Application Screenshots](#application-screenshots) 
 
 ## Description
