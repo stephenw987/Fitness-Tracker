@@ -170,7 +170,7 @@ SOFTWARE.
 
 ## Tests
 
-N / A
+N / A.
 
 ## GitHub Repository Location (HTTPS)
 
