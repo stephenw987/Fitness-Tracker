@@ -15,7 +15,6 @@
 - [Tests](#tests)
 - [GitHub Repository Location (HTTPS)](#github-repository-location-https)
 - [Render App Deployment](#render-app-deployment)
-- [Application Demonstration](#application-demonstration)
 - [Application Screenshots](#application-screenshots) 
 
 ## Description
@@ -180,9 +179,6 @@ https://github.com/stephenw987/Fitness-Tracker.git
 
 https://fitness-tracker-yx3g.onrender.com 
 
-## Application Demonstration
-
-![Fitness Tracker]()
 
 ## Application Screenshots
 
