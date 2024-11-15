@@ -5,6 +5,7 @@ import SignUpForm from './SignupForm';
 import LoginForm from './LoginForm';
 
 import Auth from '../utils/auth';
+import logo from '../assets/fitness-gym.jpg'
 
 const AppNavbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,6 +15,15 @@ const AppNavbar = () => {
       <Navbar bg='dark' variant='dark' expand='lg'>
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
+            <img 
+              src={ logo }
+              alt='fitness logo image'
+              style={{
+                width:'60px',
+                height:'60px',
+                marginRight:'15px'
+              }}
+            />
             Fitness Tracker
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
