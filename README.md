@@ -103,7 +103,7 @@ To change client configuration, the user should edit `client/vite.config.js`:
 
 ## Credits and Code Source
 
-**Logo icon**: <a href="https://www.flaticon.com/free-icons/sport" title="sport icons">Sport icons created by Flowicon - Flaticon</a>
+**Logo icon:** <a href="https://www.flaticon.com/free-icons/sport" title="sport icons">Sport icons created by Flowicon - Flaticon</a>
 
 
 ## Contribution
@@ -128,10 +128,10 @@ Additional tips:
 
 ## Project Team
 
-* Marlon Gonzalez: [GitHub](https://github.com/arrozDpollo)
-* Emeka Okpala: [GitHub](https://github.com/Hammarou)
-* Talita Rosa:  [GitHub](https://github.com/titarosa)
-* Stephen Wei:  [GitHub](https://github.com/stephenw987)
+- **Marlon Gonzalez:** [GitHub](https://github.com/arrozDpollo)
+- **Emeka Okpala:** [GitHub](https://github.com/Hammarou)
+- **Talita Rosa:**  [GitHub](https://github.com/titarosa)
+- **Stephen Wei:**  [GitHub](https://github.com/stephenw987)
 
 
 ## License
@@ -187,6 +187,6 @@ https://fitness-tracker-yx3g.onrender.com
 ## Application Screenshots
 
 ![screenshot1](assets/screenshots/screenshot1.png)
-![screenshot1](assets/screenshots/screenshot2.png)
-![screenshot1](assets/screenshots/screenshot3.png)
-![screenshot1](assets/screenshots/screenshot4.png)
+![screenshot2](assets/screenshots/screenshot2.png)
+![screenshot3](assets/screenshots/screenshot3.png)
+![screenshot4](assets/screenshots/screenshot4.png)
