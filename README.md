@@ -101,7 +101,10 @@ To change client configuration, the user should edit `client/vite.config.js`:
 **Fitness Tracker** is intended for one or more users to record their fitness sessions/entries. This data will be held locally and will persist across multiple sessions. Users of **Fitness Tracker** on a remote instance can only access their individual entries.
 
 
-<!-- ## Credits and Code Source -->
+## Credits and Code Source
+
+**Logo icon**: <a href="https://www.flaticon.com/free-icons/sport" title="sport icons">Sport icons created by Flowicon - Flaticon</a>
+
 
 ## Contribution
 
@@ -121,6 +124,7 @@ Additional tips:
 - **Review documentation:** Before opening a new issue, check the documentation support guide. 
 - **Don't duplicate issues:** Search for existing issues to see if yours has already been reported. 
 - **Focus on quality:** At the onset, focus only on making minor changes. 
+
 
 ## Project Team
 
